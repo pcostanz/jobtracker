@@ -1,4 +1,4 @@
-APP.router = Backbone.Router.extend({
+APP.Router = Backbone.Router.extend({
     routes: {
         "dashboard": "dashboard"
     },
@@ -7,3 +7,6 @@ APP.router = Backbone.Router.extend({
         console.log("dashboard route hit");
     }
 });
+
+APP.router = new APP.Router();
+Backbone.history.start({root: "/"});
