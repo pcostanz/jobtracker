@@ -1,4 +1,4 @@
-APP.JobView = Backbone.View.extend({
+APP.JobModelView = Backbone.View.extend({
     tagName: "li",
     className: "job",
 

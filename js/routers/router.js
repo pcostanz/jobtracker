@@ -5,12 +5,16 @@ APP.Router = Backbone.Router.extend({
 
     dashboard: function(){
         console.log("dashboard route hit");
-        // I need to revisit pluralization
-        APP.jobs = new APP.Job();
-        APP.users.fetch({
+        APP.jobcollection = new APP.JobCollection();
+        APP.jobcollection.fetch({
             success: function(){
-                APP.job3 = APP.jobs.get(3);
-                APP.alljobs = APP.jobs;
+                APP.jobcollectionview = new APP.JobCollectionView({
+                    collection: APP.jobcollection
+                });
+
+                APP.jobcollectionview.render();
+                $('.jumbotron').children().remove();
+                $('.jumbotron').append(APP.jobcollectionview.$el);
             }
         });
     }

@@ -1,4 +1,4 @@
-APP.Jobs = Backbone.Collection.extend({
-    model: APP.Job,
+APP.JobCollection = Backbone.Collection.extend({
+    model: APP.JobModel,
     url: "/jobs"
 });

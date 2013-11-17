@@ -1,6 +1,6 @@
 // Create user class
 
-APP.Job = Backbone.Model.extend({
+APP.JobModel = Backbone.Model.extend({
     defaults: {
         company: "",
         position: "",

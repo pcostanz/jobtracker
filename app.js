@@ -1,16 +1,21 @@
 var path = require("path");
 var express = require("express");
 var _ = require("underscore");
+var database = require("./fakeDatabase.js");
 
-var app = express()
-    .use(express.static(__dirname,
+var app = express();
+
+app.use(express.static(__dirname,
         path.join(__dirname, "bower_components"),
-        path.join(__dirname, "js")))
-    
-    .use(express.bodyParser());
+        path.join(__dirname, "js")));
 
-app.get("/", function(req, res) {
-    res.send("app.get fired for '/'");
+app.use(express.bodyParser());
+
+// Instantiate a temporary, fake database
+var db = database.fakeDatabase;
+
+app.get("/jobs", function(req, res) {
+    res.json(db);
 });
 
 app.get("/jobs", function(req, res) {
