@@ -1,7 +1,11 @@
-// Create user class
+// Create job class
 
 APP.JobModel = Backbone.Model.extend({
+
+    idAttribute: "_id",
+
     defaults: {
+        _id: null,
         company: "",
         position: "",
         link: "",

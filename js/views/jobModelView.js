@@ -2,24 +2,27 @@ APP.JobModelView = Backbone.View.extend({
     tagName: "li",
     className: "job",
 
-    template: _.template('<h3><%= company %> | <%= position %></h3>'),
+    template: _.template('<span><%= company %> | <%= position %></span><button id="edit">Edit</button><button id="delete">Delete</button>'),
 
     events: {
-        'click': 'highlight'
+        'click #edit': 'edit',
+        'click #delete': 'delete'
     },
 
     render: function() {
         
         var attributes = this.model.toJSON();
-        // I need to figure out what $el refers to before calling render
         this.$el.html(this.template(attributes));
         return this;
     },
 
-    highlight: function() {
-        
-        alert("Clicked Job");
-        //this.$el.toggleClass('queueDelete');
+    edit: function() {
+        alert("clicked edit on " + this.model.toJSON()._id);
+    },
+
+    delete: function() {
+        this.model.destroy();
+        this.remove();
     }
 });
 

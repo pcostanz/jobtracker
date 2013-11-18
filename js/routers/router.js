@@ -13,7 +13,7 @@ APP.Router = Backbone.Router.extend({
                 });
 
                 APP.jobcollectionview.render();
-                $('.jumbotron').children().remove();
+                // $('.jumbotron').children().remove();
                 $('.jumbotron').append(APP.jobcollectionview.$el);
             }
         });
