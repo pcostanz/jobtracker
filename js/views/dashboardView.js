@@ -3,7 +3,7 @@ APP.JobCollectionView = Backbone.View.extend({
     className: "joblist",
 
     events: {
-
+        
     },
 
     render: function() {

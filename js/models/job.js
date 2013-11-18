@@ -1,7 +1,8 @@
 // Create job class
 
 APP.JobModel = Backbone.Model.extend({
-
+    
+    urlRoot: "/jobs",
     idAttribute: "_id",
 
     defaults: {
