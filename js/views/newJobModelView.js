@@ -20,15 +20,15 @@ APP.NewJobModelView = Backbone.View.extend({
         APP.job = new APP.JobModel();
         this.model = APP.job;
 
+        // Backbone.Syphon is a plugin designed to help
+        // serialize form data into JSON.
         var flatData = Backbone.Syphon.serialize(this);
-
-        // var formData = this.$el.find('form').serializeArray();
-        // var flatData = _.map(formData, function(obj){
-        //     var obj2 = {};
-        //     obj2[obj.name] = obj.value;
-        //     return obj2;
-        // });
         this.model.save(flatData);
+
+        // Set the window location hash to the dashboard 
+        // route, this is effectively a redirect.
+        // TODO: What happens if the post isn't successful?
+        window.location.hash = "dashboard";
     },
 
     discard: function(e) {

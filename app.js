@@ -14,7 +14,7 @@ app.use(express.bodyParser());
 
 app.get("/jobs", helper.findAll);
 app.get("/jobs/:id", helper.findById);
-app.post('/jobs', helper.addJob);
+app.post("/jobs", helper.addJob);
 app.delete("/jobs/:id", helper.deleteJob);
 
 var port = process.env.PORT || 3000;

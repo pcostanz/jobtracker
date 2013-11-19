@@ -9,6 +9,12 @@ APP.JobModelView = Backbone.View.extend({
         'click #delete': 'delete'
     },
 
+    initialize: function(){
+        // Attempting to rerender the collection view
+        // when a model is destroyed.
+        // this.model.on('destroy', this.render, this);
+    },
+
     render: function() {
 
         var attributes = this.model.toJSON();
