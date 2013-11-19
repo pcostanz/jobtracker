@@ -1,7 +1,7 @@
 var path = require("path");
 var express = require("express");
 var _ = require("underscore");
-var jobs = require("./js/routes/jobs");
+var helper = require("./js/helper");
 
 var app = express();
 
@@ -12,10 +12,10 @@ app.use(express.static(__dirname,
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
 
-app.get("/jobs", jobs.findAll);
-app.get("/jobs/:id", jobs.findById);
-app.post('/jobs', jobs.addJob);
-app.delete("/jobs/:id", jobs.deleteJob);
+app.get("/jobs", helper.findAll);
+app.get("/jobs/:id", helper.findById);
+app.post('/jobs', helper.addJob);
+app.delete("/jobs/:id", helper.deleteJob);
 
 var port = process.env.PORT || 3000;
 app.listen(port);

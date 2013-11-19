@@ -2,7 +2,7 @@ APP.JobModelView = Backbone.View.extend({
     tagName: "li",
     className: "job",
 
-    template: _.template('<span><%= company %> | <%= position %></span><button id="edit">Edit</button><button id="delete">Delete</button>'),
+    template: _.template('<span><%= company %> | <%= position %></span><button class="btn btn-lg btn-primary" id="edit">Edit</button><button class="btn btn-lg btn-primary" id="delete">Delete</button>'),
 
     events: {
         'click #edit': 'edit',
@@ -10,7 +10,7 @@ APP.JobModelView = Backbone.View.extend({
     },
 
     render: function() {
-        
+
         var attributes = this.model.toJSON();
         this.$el.html(this.template(attributes));
         return this;
@@ -22,7 +22,6 @@ APP.JobModelView = Backbone.View.extend({
 
     delete: function() {
         this.model.destroy();
-        this.remove();
     }
 });
 

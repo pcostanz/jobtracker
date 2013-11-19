@@ -1,7 +1,7 @@
 APP.Router = Backbone.Router.extend({
     routes: {
-        "" : "home",
-        "dashboard": "dashboard",
+        "" : "dashboard",
+        "dashboard" : "dashboard",
         "jobs/add" : "addJob"
     },
 
@@ -11,34 +11,20 @@ APP.Router = Backbone.Router.extend({
 
     // add a job (duh)
     addJob: function(){
-        // create an instance of the JobModel class
-        APP.job = new APP.JobModel();
-        // instantiate a view
-        APP.job.fetch({
-            success: function(){
-                APP.jobview = new APP.NewJobModelView({
-                    model: APP.job
-                });
-                // render the view
-                APP.jobview.render();
-                // append it to the dom
-                $('.jumbotron').html(APP.jobview.$el);
-            }
-        });
+        console.log("addJob() route fired");
+        APP.jobview = new APP.NewJobModelView();
+        // render the view
+        APP.jobview.render();
+        // append it to the dom
+        $('.jumbotron').html(APP.jobview.$el);
     },
 
     home: function(){
-        console.log(this);
-
-        // instantiate a model or collection
-        // instantiate a view
-        // render it 
-        // append it to the dom
 
     },
 
     dashboard: function(){
-        console.log("dashboard route hit");
+        console.log("dashboard() route fired");
         APP.jobcollection = new APP.JobCollection();
         APP.jobcollection.fetch({
             success: function(){
