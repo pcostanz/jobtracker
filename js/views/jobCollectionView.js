@@ -9,9 +9,9 @@ APP.JobCollectionView = Backbone.View.extend({
     initialize: function() {
         // Watch the models within this collection for
         // a destroy event, rerender when this event fires.
+        // TODO: Might want to change this to "all", or
+        // add a separate 'change' event.
         this.collection.on('destroy', this.render, this);
-
-        // TODO: do I need to watch this for change? Probably if editing ends up working how I would like it to work.
     },
 
     render: function() {
@@ -20,10 +20,10 @@ APP.JobCollectionView = Backbone.View.extend({
         // collection when individual models change.
         this.$el.empty();
         this.collection.each(function(model){
-            APP.jobcollection = new APP.JobModelView({
+            APP.jobviewinstance = new APP.JobModelView({
                 model: model
             });
-            this.$el.append(APP.jobcollection.render().el);
+            this.$el.append(APP.jobviewinstance.render().el);
         }, this);
         return this;
     }

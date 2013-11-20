@@ -23,7 +23,8 @@ APP.JobModelView = Backbone.View.extend({
     },
 
     edit: function() {
-        alert("clicked edit on " + this.model.toJSON()._id);
+        // alert("clicked edit on " + this.model.toJSON()._id);
+        APP.router.navigate("/jobs/" + this.model.toJSON()._id, {trigger: true});
     },
 
     delete: function() {

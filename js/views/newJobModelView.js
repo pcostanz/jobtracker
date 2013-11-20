@@ -23,15 +23,31 @@ APP.NewJobModelView = Backbone.View.extend({
         // Backbone.Syphon is a plugin designed to help
         // serialize form data into JSON.
         var flatData = Backbone.Syphon.serialize(this);
-        this.model.save(flatData);
-
+        this.model.save(flatData, {
+            success: function() {
+                console.log("this.model.save succesfull, rerouting to /#dashboard");
+                $.pnotify({
+                    title: "Job Added Successfully",
+                    text: "Congratulations!",
+                    type: "success",
+                    styling: "bootstrap"
+                });
+                APP.router.navigate("dashboard", {trigger: true});
+            },
+            error: function (model, response, options) {
+                console.log(response);
+            }
+        });
+        // This is how I was doing this before:
         // Set the window location hash to the dashboard 
         // route, this is effectively a redirect.
         // TODO: What happens if the post isn't successful?
-        window.location.hash = "dashboard";
+        // window.location.hash = "dashboard";
     },
 
     discard: function(e) {
         e.preventDefault();
+
+        APP.router.navigate("dashboard", {trigger: true});
     }
 });
