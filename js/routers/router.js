@@ -3,41 +3,11 @@ APP.Router = Backbone.Router.extend({
         "dashboard" : "dashboard",
         "jobs/add" : "addJob",
         "jobs/:id": "editJob",
-        "parent_one": "parent_one",
-        "parent_two": "parent_two",
         "*other" : "dashboard"
     },
 
     initialize: function(){
         console.log("router initialized");
-    },
-
-    // Trying to test ways to create parent/child views
-    parent_one: function() {
-        console.log("parent() route fired");
-        APP.jobdashboardview = new APP.JobDashboardView();
-    },
-
-    // Trying to test ways to create parent/child views
-    parent_two: function(){
-        console.log("test() route fired");
-        // instantiate and display search bar
-        APP.searchbar = new APP.SearchBar();
-        $('.searchbar').html(APP.searchbar.$el);
-
-        // instantiate and display collection of jobs
-        APP.jobcollection = new APP.JobCollection();
-        APP.jobcollection.fetch({
-            success: function(){
-                APP.jobcollectionview = new APP.JobCollectionView({
-                    collection: APP.jobcollection
-                });
-
-                APP.jobcollectionview.render();
-                $('.jumbotron').html(APP.jobcollectionview.$el);
-            }
-        });
-        
     },
 
     addJob: function(){
