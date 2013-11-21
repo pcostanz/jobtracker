@@ -1,18 +1,30 @@
-APP.JobCollectionView = Backbone.View.extend({
-    tagName: "ul",
-    className: "joblist",
+APP.JobDashboardView = Backbone.View.extend({
+    tagName: "div",
+    className: "job-dashboard",
 
-    events: {
-        
+    template: _.template('<div style="background: red; height: 600px; width: 800px"><div id="test-container"></div></div>'),
+
+    initialize: function() {
+        console.log("JobDashboardView initialized");
+        // set the view element html to the template above
+        this.$el.html(this.template());
+        $(".jumbotron").html(this.$el);
+        this.render();
     },
 
     render: function() {
-        this.collection.each(function(model){
-            APP.jobcollection = new APP.JobModelView({
-                model: model
-            });
-            this.$el.append(APP.jobcollection.render().el);
-        }, this);
-        return this;
+        // render a child view
+        // instantiate collection
+        APP.jobcollection = new APP.JobCollection();
+        // fetch the collection from the server
+        APP.jobcollection.fetch({
+            success: function(collection){
+                APP.jobcollectionview = new APP.JobCollectionView({
+                    collection: collection
+                });
+                APP.jobcollectionview.render();
+                $('#test-container').html(APP.jobcollectionview.$el);
+            }
+        });
     }
 });

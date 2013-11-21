@@ -12,6 +12,6 @@ APP.UserModel = Backbone.Model.extend({
         isEmployed: false,
         masterResume: null,
         jobs: [],
-        
+        feedbacks: []
     }
 });

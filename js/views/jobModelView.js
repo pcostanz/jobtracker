@@ -28,12 +28,15 @@ APP.JobModelView = Backbone.View.extend({
     },
 
     delete: function() {
-        this.model.destroy();
+        this.model.destroy({
+            success: function(model){
+                    $.pnotify({
+                    title: "Job Deleted Successfully",
+                    text: model.toJSON()._id,
+                    type: "success",
+                    styling: "bootstrap"
+                });
+            }
+        });
     }
 });
-
-// Q. What are we doing in this view?
-
-// A. Constructing HTML using JavaScript
-
-// http://backbonejs.org/#View

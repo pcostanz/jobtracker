@@ -12,7 +12,7 @@ APP.JobModel = Backbone.Model.extend({
         company: "",
         position: "",
         link: "",
-        notes: "",
+        notes: [],
         isActive: true
     }
 });
