@@ -10,7 +10,7 @@ APP.JobModelView = Backbone.View.extend({
     },
 
     initialize: function(){
-        console.log("JobModelView Initialized");
+        console.log("VIEW:INIT:JobModelView");
         // Attempting to rerender the collection view
         // when a model is destroyed.
         // this.model.on('destroy', this.render, this);

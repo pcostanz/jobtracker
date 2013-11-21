@@ -7,7 +7,7 @@ APP.JobCollectionView = Backbone.View.extend({
     },
 
     initialize: function() {
-        console.log("JobCollectionView Initialized");
+        console.log("VIEW:INIT:JobCollectionView");
         // Watch the models within this collection for
         // a destroy event, rerender when this event fires.
         // TODO: Might want to change this to "all", or

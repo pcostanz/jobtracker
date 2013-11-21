@@ -2,14 +2,14 @@ APP.MasterView = Backbone.View.extend({
     tagName: "div",
     className: "masterView",
 
-    template: _.template('<div id="masterView" style="width: 100%; height: 800px; background: #EEEEEE; border: 1px solid #C2C2C2"><div id="tabs"></div><div id="collection"></div></div>'),
+    template: _.template('<input type="radio" name="tab" value="all" checked> All   <input type="radio" name="tab" value="applied"> Applied<div id="masterView" style="width: 100%;height: 800px; background: #EEEEEE; border: 1px solid #C2C2C2"><div id="tabs"></div><div id="collection"></div></div>'),
 
     events: {
-
+        "change input[name='tab']" : "filterCollection"
     },
 
     initialize: function() {
-        console.log("masterView Initialized");
+        console.log("VIEW:INIT:MasterView");
 
         // Set the element html to this view's template
         this.$el.html(this.template());
@@ -23,15 +23,8 @@ APP.MasterView = Backbone.View.extend({
 
     render: function() {
 
-        this.buildTabs();
         this.buildCollection();
 
-    },
-
-    buildTabs: function(){
-
-        this.tabsview = new APP.TabsView();
-        $('#tabs').html(this.tabsview.$el);
     },
 
     buildCollection: function(){
@@ -49,6 +42,9 @@ APP.MasterView = Backbone.View.extend({
         });
     },
 
-    
+    filterCollection: function() {
+        console.log("EVENT:MasterView Filtered Collection");
+        
+    }
 
 });

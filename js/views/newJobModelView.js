@@ -10,7 +10,7 @@ APP.NewJobModelView = Backbone.View.extend({
     },
 
     initialize: function() {
-        console.log("NewJobModelView Initialized");
+        console.log("VIEW:INIT:NewJobModelView");
     },
 
     render: function() {
