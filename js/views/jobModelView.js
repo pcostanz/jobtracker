@@ -1,8 +1,8 @@
 APP.JobModelView = Backbone.View.extend({
     tagName: "li",
-    className: "job",
+    className: "jobCard",
 
-    template: _.template('<span><%= company %> | <%= position %></span><button class="btn btn-lg btn-primary" id="edit">Edit</button><button class="btn btn-lg btn-primary" id="delete">Delete</button>'),
+    template: _.template('<span><%= company %> | <%= position %></span><div style="float: right"><button class="btn btn-primary" id="edit">Details</button>  <button class="btn btn-danger" id="delete">Delete</button><div>'),
 
     events: {
         'click #edit': 'edit',

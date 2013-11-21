@@ -1,6 +1,7 @@
 APP.Router = Backbone.Router.extend({
     routes: {
         "dashboard" : "dashboard",
+        "masterview": "masterView",
         "jobs/add" : "addJob",
         "jobs/:id": "editJob",
         "*other" : "dashboard"
@@ -8,6 +9,11 @@ APP.Router = Backbone.Router.extend({
 
     initialize: function(){
         console.log("router initialized");
+    },
+
+    masterView: function() {
+        console.log("masterView() route fired");
+        APP.masterview = new APP.MasterView();
     },
 
     addJob: function(){

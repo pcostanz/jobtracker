@@ -13,6 +13,6 @@ APP.JobModel = Backbone.Model.extend({
         position: "",
         link: "",
         notes: [],
-        isActive: true
+        status: "tracking"
     }
 });
