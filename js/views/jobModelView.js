@@ -10,16 +10,29 @@ APP.JobModelView = Backbone.View.extend({
     },
 
     initialize: function(){
+        console.log("JobModelView Initialized");
         // Attempting to rerender the collection view
         // when a model is destroyed.
         // this.model.on('destroy', this.render, this);
     },
 
     render: function() {
-
         var attributes = this.model.toJSON();
         this.$el.html(this.template(attributes));
         return this;
+
+        // 
+        // This is my failed attempt at getting handlebars
+        // templating working by referencing an external
+        // file.
+        //
+        // var source = $("#hbs-jobCard").html();
+        // console.log(source);
+        // var template = Handlebars.compile(source);
+        // var content = template(attributes);
+        // console.log(content);
+        // this.$el.html(content);
+
     },
 
     edit: function() {

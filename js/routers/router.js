@@ -5,12 +5,7 @@ APP.Router = Backbone.Router.extend({
         "jobs/:id": "editJob",
         "parent_one": "parent_one",
         "parent_two": "parent_two",
-        "*other" : "dashboard", // Using * is called a router splat.
-        // This is used as a wildcard to redirect urls that are not
-        // matched to a generic location. Alternatively we could
-        // send to a 404 or a temporary 404 with a redirect to the
-        // default route.
-
+        "*other" : "dashboard"
     },
 
     initialize: function(){
@@ -39,7 +34,6 @@ APP.Router = Backbone.Router.extend({
                 });
 
                 APP.jobcollectionview.render();
-                // $('.jumbotron').children().remove();
                 $('.jumbotron').html(APP.jobcollectionview.$el);
             }
         });

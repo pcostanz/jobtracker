@@ -9,6 +9,10 @@ APP.NewJobModelView = Backbone.View.extend({
         'click #discard': 'discard'
     },
 
+    initialize: function() {
+        console.log("NewJobModelView Initialized");
+    },
+
     render: function() {
         this.$el.html(this.template());
         return this;
