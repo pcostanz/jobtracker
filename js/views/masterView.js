@@ -2,7 +2,7 @@ APP.MasterView = Backbone.View.extend({
     tagName: "div",
     className: "masterView",
 
-    template: _.template('<input type="radio" name="tab" value="all" checked> All   <input type="radio" name="tab" value="applied"> Applied<div id="masterView" style="width: 100%;height: 800px; background: #EEEEEE; border: 1px solid #C2C2C2"><div id="tabs"></div><div id="collection"></div></div>'),
+    template: _.template('<input type="radio" name="tab" value="all" checked> All   <input type="radio" name="tab" value="applied"> Active<div id="masterView" style="width: 100%;height: 800px; background: #EEEEEE; border: 1px solid #C2C2C2"><div id="tabs"></div><div id="collection"></div></div>'),
 
     events: {
         "change input[name='tab']" : "filterCollection"
@@ -22,21 +22,21 @@ APP.MasterView = Backbone.View.extend({
     },
 
     render: function() {
+        APP.jobcollection = new APP.JobCollection();
 
-        this.buildCollection();
+        this.buildCollection(APP.jobcollection);
 
     },
 
-    buildCollection: function(){
-        APP.jobcollection = new APP.JobCollection();
-        APP.jobcollection.fetch({
+    buildCollection: function(collection){
+        
+        collection.fetch({
             success: function(){
                 this.joblist = new APP.JobCollectionView({
                     collection: APP.jobcollection
                 });
 
                 this.joblist.render();
-                // $('.jumbotron').children().remove();
                 $('#collection').html(this.joblist.$el);
             }
         });
@@ -44,7 +44,12 @@ APP.MasterView = Backbone.View.extend({
 
     filterCollection: function() {
         console.log("EVENT:MasterView Filtered Collection");
-        
+        console.log(APP.jobcollection);
+        var newCollection = _.filter(APP.jobcollection, function(item){
+            return item.get("isActive") === true;
+        });
+        console.log(newCollection);
+        console.log(APP.jobcollection);
+        this.buildCollection(newCollection);
     }
-
 });

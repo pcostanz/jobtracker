@@ -2,6 +2,7 @@ APP.Router = Backbone.Router.extend({
     routes: {
         "dashboard" : "dashboard",
         "masterview": "masterView",
+        "masterview/:filter": "filter",
         "jobs/add" : "addJob",
         "jobs/:id": "editJob",
         "*other" : "dashboard"

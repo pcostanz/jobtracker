@@ -8,6 +8,7 @@ var Db = mongo.Db;
 var BSON = mongo.BSONPure;
 
 var server = new Server('localhost', 27017, {auto_reconnect: true});
+// var server = new Server('mongodb://heroku:8521a73d794b860f426bca178a819f76@dharma.mongohq.com:10091/app19649432', 10091, {auto_reconnect: true});
 db = new Db('jobsdb', server);
 
 db.open(function(err, db) {
