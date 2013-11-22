@@ -5,7 +5,8 @@ APP.MasterView = Backbone.View.extend({
     template: _.template('<input type="text"id="searchbar"/>   <input type="radio" name="tab" value="all" checked> All   <input type="radio" name="tab" value="applied"> Active<div id="masterView" style="width: 100%;height: 800px; background: #EEEEEE; border: 1px solid #C2C2C2"><div id="tabs"></div><div id="collection"></div></div>'),
 
     events: {
-        "change input[name='tab']" : "filterCollection"
+        "change input[name='tab']" : "filterCollection",
+        "keyup #searchbar": "search"
     },
 
     initialize: function() {
@@ -38,6 +39,30 @@ APP.MasterView = Backbone.View.extend({
                 $('#collection').html(this.joblist.$el);
             }
         });
+    },
+
+    search: function() {
+        var keys = $("#searchbar").val();
+        // TODO: debounce
+        console.log(keys);
+
+        // 
+        console.log(APP.jobcollection);
+
+        // Object object Object has no method 'search'
+        var searched = APP.jobcollection.search(keys);
+        console.log(searched);
+
+        var newCollection = new APP.JobCollection(searched);
+
+        console.log("new collection:")
+        console.log(newCollection);
+
+        this.joblist = new APP.JobCollectionView({
+            collection: newCollection
+        });
+        this.joblist.render();
+        $('#collection').html(this.joblist.$el);
     },
 
     filterCollection: function() {

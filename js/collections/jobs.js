@@ -2,17 +2,15 @@ APP.JobCollection = Backbone.Collection.extend({
     model: APP.JobModel,
     url: "/jobs",
 
-    // filter : function(arg) {
-    //     console.log(this);
 
-        // var test = _.filter(this, function(item){
-        //     return item.get("isActive") === true;
-        // });
+    search: function(keys) {
+        if (keys === "") {return this;}
 
-    //     console.log(test);
+        var pattern = new RegExp(keys, "gi");
+        return this.filter(function(data){
+            return pattern.test(data.get("company"));
+        });
 
-    //     return this.filter(function(item){
-    //         return item.get('isActive');
-    //     });
-    // }
+    }
+
 });
