@@ -49,13 +49,16 @@ APP.MasterView = Backbone.View.extend({
         // 
         console.log(APP.jobcollection);
 
-        // Object object Object has no method 'search'
+
         var searched = APP.jobcollection.search(keys);
+        console.log("searched collection = ");
         console.log(searched);
 
+        // this is behaving badly when the 'searched' collection
+        // is an unmodified (unfiltered) instance of JobCollection
         var newCollection = new APP.JobCollection(searched);
 
-        console.log("new collection:")
+        console.log("new collection:");
         console.log(newCollection);
 
         this.joblist = new APP.JobCollectionView({
@@ -76,7 +79,7 @@ APP.MasterView = Backbone.View.extend({
         var newCollection = new APP.JobCollection(filtered);
         console.log(newCollection);
 
-        // Wow...okay, so for whatever reason you can't use underscore
+        // For whatever reason you can't use underscore
         // functionality by calling _.function(collection, iterator(){})
         // that is seriously lame. See above for correct way.
         //

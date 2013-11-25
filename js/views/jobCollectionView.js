@@ -31,7 +31,4 @@ APP.JobCollectionView = Backbone.View.extend({
 
         return this;
     },
-
-    // new function to use _filter or _findwhere in underscore to filter
-    // through the collection and only render the ones that match
 });

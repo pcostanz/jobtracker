@@ -4,6 +4,8 @@ APP.JobCollection = Backbone.Collection.extend({
 
 
     search: function(keys) {
+        console.log("search collection = ");
+        console.log(this);
         if (keys === "") {return this;}
 
         var pattern = new RegExp(keys, "gi");
